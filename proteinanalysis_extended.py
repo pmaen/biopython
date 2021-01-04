@@ -21,8 +21,7 @@ if pH_input == "":
     pH= 7.4
 elif pH_input != "":
     pH = pH_input
-    
-#Parser
+
 import os 
 os.chdir(directory)
 os.mkdir(directory + "/"+ filename_raw +"_split")
