@@ -51,12 +51,12 @@ for idx, somefile in enumerate(os.listdir(directory + "/"+ filename_raw +"_split
         pd_count_amino_acids = pd.DataFrame(X.count_amino_acids(), index=[1])
         print("number of amino acids: \n",pd_count_amino_acids , file=f)
         plt_acc = pd_count_amino_acids.plot.bar()
-        plt.savefig(filename + "_count_amino_acids_plot_" + str(idx) + ".pdf")
+        plt.savefig(somefile + "_count_amino_acids_plot_" + str(idx) + ".pdf")
         #
         pd_get_amino_acids_percent = pd.DataFrame(X.get_amino_acids_percent(), index=[1])
         print("\n percentage of amino acids: \n", pd_get_amino_acids_percent, file=f)
         plt_acp = pd_get_amino_acids_percent.plot.bar()
-        plt.savefig(filename + "amino_acids_percent_plot_" + str(idx) + ".pdf")
+        plt.savefig(somefile + "amino_acids_percent_plot_" + str(idx) + ".pdf")
         #
         print("\n molecular weight: {:.2f}".format(X.molecular_weight()), file=f)
         print("\n aromaticity: {:.2f}".format(X.aromaticity()), file=f)
