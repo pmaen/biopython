@@ -5,11 +5,15 @@ from pydub import AudioSegment
 from pydub.utils import make_chunks
 import time
 import glob
+import re 
+import math
+from pathlib import Path
 
 start_time= time.time()
-filename = input("Bitte geben Sie den gesamten Dateinamen inklusive Endung an:\n")
+lang = input("Please choose the language for voice recognition by language code.\n deutsch: de-DE")
+filename = input("Please enter the whole file path including the extension:\n")
 fileaudio = filename + ".wav"
-title = input("Um welches Thema handelt es sich?\n")
+title = input("Whats the topic?\n")
 
 clip = mp.VideoFileClip(filename) 
 clip.audio.write_audiofile(fileaudio)
@@ -28,7 +32,7 @@ for i, chunk in enumerate(chunks):
     audio = sr.AudioFile(chunk_name)
     with audio as source:
       audio_file = r.record(source)
-    result = r.recognize_google(audio_file, language='de-DE')
+    result = r.recognize_google(audio_file, language=lang)
     with open(chunk_name + ".rectext" ,mode ='w') as file:  
        file.write(result) 
     print("Part" + str(i) + " finished.")
